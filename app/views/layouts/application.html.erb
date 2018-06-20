@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ExamNhurtado</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+    </style>
+  </head>
+
+  <body>
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+  <ul>
+    <li> <%= link_to "Home", root_path %></li>
+    <% if current_costumer.present? %>
+      <li style="float:right;"><%= link_to "Sign Out", destroy_costumer_session_path, method: :delete %></li>
+    <% else %>
+      <li style="float:right;"><%= link_to "Sign In", new_costumer_session_path %></li>
+    <% end %>
+  </ul>
+    <%= yield %>
+  </body>
+</html>

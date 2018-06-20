@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #8B0000;
+  justify-content: center;
+}
+
+.flex-container > div {
+  background-color: #3f0000;
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+  line-height: 10px;
+  font-size: 30px;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="flex-container">
+  <% @recipes.each do |recipe| %>
+      <div>
+	<img alt="Icon" src="/assets/pizza.jpg" width="200" height="200" />
+        <h6><%= recipe.name %></h6>
+	<h6>$<%= recipe.price+500 %>-$<%= recipe.price+1000 %></h6>
+	<%= button_to 'buy', recipe, :method => "get" %>
+      </div>
+    <% end %> 
+</div>
+
+</body>
+</html>

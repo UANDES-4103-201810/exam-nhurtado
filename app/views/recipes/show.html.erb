@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2><%= @recipe.name %></h2>
+</p>
+
+<img alt="Icon" src="/assets/pizza.jpg" width="200" height="200" />
+
+<p>
+  <strong>Ingredients:</strong>
+  <% @ingredients.each do |ingredient| %>
+        <p><%= ingredient.name %></p>
+  <% end %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @recipe.price %>
+</p>
+
+<%= form_tag pizzas_path pizza: {recipe_id: @recipe.id}   do %>
+  <div class="field">
+    <%= collection_select(:pizza, :crust_id, Crust.all, :id, :crust_type, prompt: true)  %>
+  </div>
+  <%= submit_tag 'add pizza to cart.' %>
+<% end %>
