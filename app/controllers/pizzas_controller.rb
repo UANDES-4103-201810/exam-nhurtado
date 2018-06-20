@@ -4,7 +4,7 @@ class PizzasController < ApplicationController
   # GET /pizzas
   # GET /pizzas.json
   def index
-    @pizzas = Pizza.all
+    @pizzas = Pizza.where("costumer_id = ?", current_costumer.id)
   end
 
   # GET /pizzas/1
@@ -25,10 +25,11 @@ class PizzasController < ApplicationController
   # POST /pizzas.json
   def create
     @pizza = Pizza.new(pizza_params)
-
+    @pizza.costumer_id = current_costumer.id
+    @pizza.ordered = false
     respond_to do |format|
       if @pizza.save
-        format.html { redirect_to @pizza, notice: 'Pizza was successfully created.' }
+        format.html { redirect_to pizzas_path, notice: 'Pizza was successfully created.' }
         format.json { render :show, status: :created, location: @pizza }
       else
         format.html { render :new }

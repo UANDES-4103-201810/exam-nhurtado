@@ -44,6 +44,7 @@
     <li> <%= link_to "Home", root_path %></li>
     <% if current_costumer.present? %>
       <li style="float:right;"><%= link_to "Sign Out", destroy_costumer_session_path, method: :delete %></li>
+      <li style="float:right;"><%= link_to "Cart", pizzas_path %></li>
     <% else %>
       <li style="float:right;"><%= link_to "Sign In", new_costumer_session_path %></li>
     <% end %>

@@ -1,29 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Pizzas</h1>
+<h1>Cart</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Crust</th>
-      <th>Recipe</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @pizzas.each do |pizza| %>
       <tr>
-        <td><%= pizza.crust %></td>
-        <td><%= pizza.recipe %></td>
-        <td><%= link_to 'Show', pizza %></td>
-        <td><%= link_to 'Edit', edit_pizza_path(pizza) %></td>
-        <td><%= link_to 'Destroy', pizza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= pizza.recipe.name %></td>
+        <td> Crust type: <%= pizza.crust.crust_type %></td>
+        <td><%= link_to 'Cancel', pizza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<% if @pizzas.count > 0 %>
+	<button>Crear Orden</button>
+<% end %>
 
-<%= link_to 'New Pizza', new_pizza_path %>
+<br>

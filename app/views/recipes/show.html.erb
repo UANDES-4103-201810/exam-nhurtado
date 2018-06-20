@@ -18,7 +18,7 @@
   <%= @recipe.price %>
 </p>
 
-<%= form_tag pizzas_path pizza: {recipe_id: @recipe.id}   do %>
+<%= form_tag pizzas_path pizza: {recipe_id: @recipe.id, crust_id: 1}   do %>
   <div class="field">
     <%= collection_select(:pizza, :crust_id, Crust.all, :id, :crust_type, prompt: true)  %>
   </div>
